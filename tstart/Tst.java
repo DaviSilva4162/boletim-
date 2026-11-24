@@ -181,6 +181,113 @@ public class Tst {
 
 }
 
+                try {
+                    n1 = Double.parseDouble(entrada.replace(',', '.'));
+
+                    if (n1 < 0 || n1 > 10) {
+                        System.out.println("Digite um valor de 0 a 10!");
+                        continue;
+                    }
+
+                    break;
+                } catch (NumberFormatException erro) {
+                    System.out.println("Entrada inválida! Digite um número.");
+                }
+            }
+            // FINAL
+
+            // INICIO DO CÓDIGO QUE IRÁ SOLICITAR A 2(SEGUNDA) NOTA
+            double n2;
+
+            while (true) {
+                System.out.println("Digite a segunda nota:");
+                String entrada = teclado.nextLine().trim();
+
+                if (entrada.isEmpty()) {
+                    System.out.println("O campo não estar  vazio!");
+                    continue;
+                }
+
+                try {
+                    n2 = Double.parseDouble(entrada.replace(',', '.'));
+
+                    if (n2 < 0 || n2 > 10) {
+                        System.out.println("Digite um valor de 0 a 10!");
+                        continue;
+                    }
+
+                    break;
+                } catch (NumberFormatException erro) {
+                    System.out.println("Entrada inválida! Digite um número.");
+                }
+            }
+            // FINAL
+
+            // Divide a soma da primeira e segunda nota e divide por 2!
+            double mediaAluno = (n1 + n2) / 2;
+
+            // Adiciona o valor de media aluano, a cada indice do array, a cada repetição do laço
+            notas[contador] = mediaAluno;
+
+            // Argurmento para o RETURN
+            soma += mediaAluno;
+
+            // Exibe a média do aluno a cada volta do laço
+            System.out.printf("Média de %s: %.2f%n", nome, mediaAluno);
+
+            // Método que irá verificar se a média está dentro dos parametros esperados.
+            aprovacao(mediaAluno);
+        }
+
+        // ABAIXO ESTÃO OS CÓDIGOS QUE SERÃO EXECUTADOS, APÓS AS 5 VOLTAS DO LAÇO
+
+        // Exibe todos os valores do array
+        System.out.printf("Notas da Turma \n " + Arrays.toString(notas));
+
+        // Metodo que irá identificar a menor e maior nota do Array
+        maiormenor(notas, 0, soma, soma);
+
+        return soma;
+    }
+
+    // Método utilizado para identicar qual o menor/maior valor do array Notas!
+    public static void maiormenor(double[] notas, int contador, double maior, double menor) {
+        maior = notas[0];
+        menor = notas[0];
+
+        for (contador = 1; contador < notas.length; contador++) {
+            if (notas[contador] > maior) {
+                maior = notas[contador];
+            }
+
+            if (notas[contador] < menor) {
+                menor = notas[contador];
+            }
+        }
+
+        System.out.printf("Maior nota é %.2f%n", maior);
+        System.out.printf("Menor nota é %.2f%n", menor);
+    }
+
+    /*
+     Método utilizado para identicar se a soma das duas notas recebidas, divididas por 2. Está dentro
+     dos valores de média esperado.
+    */
+    public static void aprovacao(double soma) {
+        if (soma >= 5) {
+            System.out.println("Aprovado");
+        } else {
+            if (soma >= 4.5 && soma < 5.0) {
+                System.out.println("Em recuperação!");
+            } else {
+                if (soma < 4.5) {
+                    System.out.println("Reprovado!");
+                }
+            }
+        }
+    }
+}
+
 
  
 
