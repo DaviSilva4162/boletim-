@@ -57,11 +57,11 @@ public class Tst {
         // INICIO DO CÓDIGO QUE IRÁ SOLICITAR A 1(PRIMEIRA) NOTA
           double n1;
             while (true) {
-    System.out.println("Digite a primeira nota!:");
-    String entrada = teclado.nextLine().trim();
+            System.out.println("Digite a primeira nota!:");
+            String entrada = teclado.nextLine().trim();
 
-        if (entrada.isEmpty()) {
-        System.out.println("O campo não pode estar vazio!");
+            if (entrada.isEmpty()) {
+            System.out.println("O campo não pode estar vazio!");
         continue;
     }
 
@@ -116,6 +116,7 @@ public class Tst {
         //Argurmento para o RETURN
         soma += mediaAluno;  
 
+
         //Exibe a média do aluno a cada volta do laço
          System.out.printf("Média de %s: %.2f%n", nome, mediaAluno);
         //Método que irá verificar se a média está dentro dos parametros esperados.
@@ -125,14 +126,21 @@ public class Tst {
 
     //ABAIXO ESTÃO OS CÓDIGOS QUE SERÃO EXECUTADOS, APÓS AS 5 VOLTAS DO LAÇO
 
+
+    // Váriavel que ira calcular a média geral da turma
+    double MediaGeral = soma/5;
+
     //Exibe todos os valores do array
-    System.out.printf("Notas da Turma \n " + Arrays.toString(notas));
+    System.out.printf("Notas da Turma   " + Arrays.toString(notas) + "\n");
     
     // Metodo que irá identificar a menor e maior nota do Array
     maiormenor(notas, 0, soma, soma); 
+
+    //Irá exibir a média geral da turma.
+    System.out.printf("A média geral da turma foi: %.2f%n", MediaGeral);
     return soma;   
 }
-
+    
 
 //Método utilizado para identicar qual o menor/maior valor do array Notas!
     public static void maiormenor( double[] notas,
@@ -152,8 +160,8 @@ public class Tst {
         }
     }
 
-    System.out.printf("Maior nota é %.2f%n", maior);
-    System.out.printf("Menor nota é %.2f%n",  menor);
+    System.out.printf("Maior nota é %.2f%n  ", maior);
+    System.out.printf("Menor nota é %.2f%n  ", menor);
 }
 
 
